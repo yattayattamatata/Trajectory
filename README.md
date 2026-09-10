@@ -33,6 +33,17 @@ Early development — this is a course project (CMPSC 411) built collaboratively
 
 ## Getting Started
 
+The simplest way to get set up, regardless of what code editor you use:
+
+1. **Install [GitHub Desktop](https://desktop.github.com/)** — no terminal or SSH keys required.
+2. **Sign in** with your GitHub account (opens a normal browser login).
+3. **Clone the repo**: File → Clone Repository → search "Trajectory" (or paste `https://github.com/yattayattamatata/Trajectory`) → pick a folder → Clone.
+4. **Open the cloned folder** in whatever editor you use (VS Code, VSCodium, IntelliJ, etc.) — GitHub Desktop often shows a shortcut button for this automatically.
+5. **Make your changes**, then switch back to GitHub Desktop. It lists everything you changed — write a short commit summary, click **Commit to main** (or your feature branch), then **Push origin**.
+6. **Before starting new work**, click **Fetch origin** then **Pull origin** in GitHub Desktop to make sure you're not working on an outdated copy.
+
+If you're comfortable with git via terminal/SSH instead, that works too:
+
 ```bash
 git clone git@github.com:yattayattamatata/Trajectory.git
 cd Trajectory
