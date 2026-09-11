@@ -4,11 +4,11 @@
 
 public class Debt {
 
-    double balance, // Total amount owed on debt.
-           aprDecimal, // Decimal version of APR 5% => 0.05
-           minimumPayment; // Minimum 
+    private double balance, // Total amount owed on debt.
+                   aprDecimal, // Decimal version of APR 5% => 0.05
+                   minimumPayment; // Minimum 
 
-    String label; // Name of specific debt
+    private String label; // Name of specific debt
 
     CompoundInterestCalculator interestHelper;
 
