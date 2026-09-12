@@ -1,3 +1,4 @@
+package com.trajectory.app.model;
 import java.util.ArrayList;
 
 /**
