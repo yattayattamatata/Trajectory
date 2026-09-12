@@ -57,6 +57,14 @@ public class User {
         return this.listOfInvestments;
     }
 
+    /**
+     * Get user's name.
+     * @return User's name.
+     */
+    public String getName(){
+        return name;
+    }
+
 // Calculations
 
     /**
