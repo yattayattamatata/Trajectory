@@ -11,6 +11,7 @@ public class Investment {
 
     private String label; // Title for this investment.
 
+
 //Constructor
     /**
      * Constructs a Investment object representing a single investment or savings account.
@@ -25,6 +26,26 @@ public class Investment {
         this.monthlyContribution = monthlyContribution;
         this.label = label;
     }
+
+
+// Getters
+
+    /**
+     * Get balance for investment.
+     * @return Balance of investment.
+     */
+    public double getBalance(){
+        return balance;
+    }
+
+    /**
+     * Get label for investment.
+     * @return Label of investment.
+     */
+    public String getLabel(){
+        return label;
+    }
+
 
 // Calculations
 

@@ -23,13 +23,31 @@ public class Debt {
      * @param minimumPayment Minimum required monthly payment.
      * @param label Title for this debt.
      */
-    Debt(double balance, double aprDecimal, double minimumPayment, String label){
+    public Debt(double balance, double aprDecimal, double minimumPayment, String label){
         this.balance = balance;
         this.aprDecimal = aprDecimal;
         this.minimumPayment = minimumPayment;
         this.label = label;
     }
 
+
+// Getters
+
+    /**
+     * Get balance for debt.
+     * @return Balance of debt.
+     */
+    public double getBalance(){
+        return balance;
+    }
+
+    /**
+     * Get label for debt.
+     * @return Label of debt.
+     */
+    public String getLabel(){
+        return label;
+    }
 
 // Calculations
 
