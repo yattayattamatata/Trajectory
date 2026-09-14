@@ -52,6 +52,7 @@ public class Driver {
         }
 
     // Debt Payoffs
+        double sumOfDebtInterestProjections = 0.0;
         for(Debt debt: newUser.getDebts()){
             System.out.println("\nWhat monthly payment do you want to test for " + debt.getLabel() + "?");
             double testPayment = Double.parseDouble(scnr.nextLine());
@@ -62,11 +63,13 @@ public class Driver {
                 System.out.println("At $" + testPayment + "/month, " + debt.getLabel() + " can never get paid off (payment is less than interest accrued)!");
             }
             else{
+                sumOfDebtInterestProjections += result.getTotalInterestPaid();
                 System.out.println(debt.getLabel() + " would be paid off in " + result.getMonthsToPayoff() + " months, costing $" + String.format("%,.2f", result.getTotalInterestPaid()) + " in interest.");
             }
         }
 
     // Investment Growth
+        double sumOfInvestmentProjections = 0.0;
         for(Investment investment: newUser.getInvestments()){
             System.out.println("\nHow many years do you want to project growth for " + investment.getLabel() + "?");
             int years = Integer.parseInt(scnr.nextLine());
@@ -74,14 +77,20 @@ public class Driver {
             ArrayList<Double> growth = investment.growthOverTime(years);
 
             double finalBal = growth.get(growth.size() - 1);
+            sumOfInvestmentProjections += finalBal;
+
             System.out.println(investment.getLabel() + " is projected to grow to $" + String.format("%,.2f", finalBal) + " after " + years + " years.");
         }
 
     // Summary
         System.out.print("\n\n");
         System.out.println("Summary for " + newUser.getName());
-        System.out.println("Total debt $" + String.format("%,.2f", newUser.getTotalDebt()));
-        System.out.println("Total investments $" + String.format("%,.2f", newUser.getTotalInvested()));
+
+        System.out.println("\nTotal current debt $" + String.format("%,.2f", newUser.getTotalDebt()));
+        System.out.println("Total projected interest across all debts $" + String.format("%,.2f", sumOfDebtInterestProjections));
+
+        System.out.println("\nTotal current investments $" + String.format("%,.2f", newUser.getTotalInvested()));
+        System.out.println("Total projected investments $" + String.format("%,.2f", sumOfInvestmentProjections));
     }
 
 
