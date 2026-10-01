@@ -25,6 +25,16 @@ replay_pid*
 
 # Editor
 .vscode/
+.idea/
 
 # Compiled output
 bin/
+target/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes

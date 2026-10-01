@@ -1,6 +1,7 @@
 package com.trajectory.app;
 
 import com.trajectory.app.model.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -81,6 +82,8 @@ public class Driver {
 
             System.out.println(investment.getLabel() + " is projected to grow to $" + String.format("%,.2f", finalBal) + " after " + years + " years.");
         }
+
+        scnr.close();
 
     // Summary
         System.out.print("\n\n");

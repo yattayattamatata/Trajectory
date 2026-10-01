@@ -9,7 +9,7 @@ public class Debt {
 
     private double balance, // Principal amount owed on debt.
                    aprDecimal, // APR as a decimal (5% = 0.05).
-                   minimumPayment; // Minimum required monthly payment.
+                   minimumPayment; // Minimum required monthly payment from lender.
 
     private String label; // Title for this debt.
 
