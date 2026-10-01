@@ -49,7 +49,16 @@ git clone git@github.com:yattayattamatata/Trajectory.git
 cd Trajectory
 ```
 
-*(Build/run instructions to be added as the project takes shape.)*
+## Building and Running
+
+This project uses Maven. Full environment setup — JDK, JavaFX, Scene Builder, and troubleshooting — is in [SETUP.md](SETUP.md).
+
+Once set up:
+
+```bash
+mvn compile
+mvn exec:java
+```
 
 ## Contributing
 
