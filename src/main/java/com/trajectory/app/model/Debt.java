@@ -6,14 +6,11 @@ import java.util.ArrayList;
  */
 
 public class Debt {
-
     private double balance, // Principal amount owed on debt.
                    aprDecimal, // APR as a decimal (5% = 0.05).
                    minimumPayment; // Minimum required monthly payment from lender.
 
     private String label; // Title for this debt.
-
-    CompoundInterestCalculator interestHelper;
 
 
 // Constructor
@@ -38,17 +35,61 @@ public class Debt {
      * Get balance for debt.
      * @return Balance of debt.
      */
-    public double getBalance(){
-        return balance;
-    }
+    public double getBalance(){return balance;}
+
+    /**
+     * Get APR for debt.
+     * @return APR of debt as decimal (5% = 0.05).
+     */
+    public double getAPRDecimal(){return aprDecimal;}
+
+    /**
+     * Get minimum payment for debt.
+     * @return Minimum payment of debt.
+     */
+    public double getMinimumPayment(){return minimumPayment;}
 
     /**
      * Get label for debt.
      * @return Label of debt.
      */
-    public String getLabel(){
-        return label;
+    public String getLabel(){return label;}
+
+
+//Setters
+
+    /**
+     * Set balance of a debt.
+     * @param newBalance New value for balance of a debt.
+     */
+    public void setBalance(double newBalance){
+        this.balance = newBalance;
     }
+
+    /**
+     * Set APR of a debt.
+     * @param newAPR New APR of debt as decimal (5% = 0.05).
+     */
+    public void setAPRDecimal(double newAPR){
+        this.aprDecimal = newAPR;
+    }
+
+    /**
+     * Set minimum payment of a debt.
+     * @param newMinimumPayment New minimum payment of a debt.
+     */
+    public void setMinimumPayment(double newMinimumPayment){
+        this.minimumPayment = newMinimumPayment;
+    }
+
+    /**
+     * Set label of a debt.
+     * @param newLabel New label of a debt.
+     */
+    public void setLabel(String newLabel){
+        this.label = newLabel;
+    }
+
 
 // Calculations
 

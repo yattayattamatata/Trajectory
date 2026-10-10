@@ -6,13 +6,13 @@ import java.util.ArrayList;
  */
 
 public class DebtPayoffFeasibility {
-
     private boolean isPossible;
     private int monthsToPayoff;
     private double totalInterestPaid;
     private ArrayList<Double> monthlyBalance;
 
-// Constructors
+
+// Constructor
     /**
      * Private constructor used by impossible and possible function to create helper objects.
      * @param isPossible If it is possible to pay the debt off or not.
@@ -27,7 +27,9 @@ public class DebtPayoffFeasibility {
         this.monthlyBalance = monthlyBalance;
     }
 
+
 // Getters
+
     public boolean isPossible(){
         return isPossible;
     }
@@ -44,6 +46,7 @@ public class DebtPayoffFeasibility {
         return monthlyBalance;
     }
 
+    
 // Calculations
 
     /**

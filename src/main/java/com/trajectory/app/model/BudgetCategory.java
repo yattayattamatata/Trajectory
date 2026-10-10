@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /**
  * An Enum (list of non-changing entries ~think days of the week M-T-W-H-F-Sa-Su) for the different possible income and expense budget categories. 
  */
+
 public enum BudgetCategory {
 
     // Income Categories
@@ -29,7 +30,6 @@ public enum BudgetCategory {
     INVESTMENTS             (Type.EXPENSE,"Investment Contributions"),
     OTHER_EXPENSE           (Type.EXPENSE,"Other Expense");
 
-
     /**
      * Enum used to differentiate a budget category as an income or an expense category.
      */
@@ -38,12 +38,11 @@ public enum BudgetCategory {
         EXPENSE;
     }
 
-
     private final Type type; // Income or Expense, differentiating categories.
     private final String guiName; // Name that is displayed in GUI.
     
 
-// Constructors
+// Constructor
     /**
      * Constructor that gives each category specific traits.
      * @param type Income or Expense.
@@ -56,21 +55,18 @@ public enum BudgetCategory {
 
 
 // Getters
+
     /**
      * Method used to get a category type.
      * @return Income or Expense Type.
      */
-    public Type getType(){
-        return this.type;
-    }
+    public Type getType(){return this.type;}
 
     /**
      * Method used to get a category's displayed name.
      * @return Name of a category for display.
      */
-    public String getGUIName(){
-        return this.guiName;
-    }
+    public String getGUIName(){return this.guiName;}
 
     /**
      * Method used to get a list of all possible categories belonging to a specific type.

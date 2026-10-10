@@ -9,7 +9,6 @@ import java.util.ArrayList;
  */
 
 public class CompoundInterestCalculator {
-
     private double amountOverTime = 0.0,  // Computed total after growth and contributions or payments.
                    principalAmount,       // Starting balance (P) before growth.
                    rate,                  // Annual interest rate, expressed in decimal form (5% = 0.05).
@@ -18,8 +17,7 @@ public class CompoundInterestCalculator {
     private int numberOfCompoundsPerYear, // How many times per year that interest compounds (n).
                 numberYears;              // Number of years to project (t).
 
-// Constructors
-
+// Constructor
     /**
      * Constructs a calculator and computes the final amount.
      * @param principal       starting balance

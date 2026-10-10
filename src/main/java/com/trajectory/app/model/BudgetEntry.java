@@ -3,10 +3,12 @@ package com.trajectory.app.model;
 /**
  * Class used to build entries in a budget.
  */
-public class BudgetEntry {
 
+public class BudgetEntry {
     private String customDescription; // Holds user defined name (custom label when other is selected).
+
     private BudgetCategory category; // Holds specific category that this budget entry is.
+
     private double amount; // Amount assigned to this entry.
 
 
@@ -21,17 +23,6 @@ public class BudgetEntry {
         this.customDescription = description;
         this.category = category;
         this.amount = amount;
-    }
-
-
-// Calculations
-    /**
-     * Method used to determine if a entry is an OTHER category.
-     * @return If the category is an OTHER category.
-     */
-    private boolean isOtherCategory(){
-        boolean isOther = category == BudgetCategory.OTHER_EXPENSE || category == BudgetCategory.OTHER_INCOME ? true : false;
-        return isOther;
     }
 
     
@@ -88,5 +79,17 @@ public class BudgetEntry {
      * @param newAmount New amount of an entry.
      */
     public void setAmount(double newAmount){this.amount = newAmount;}
+
+
+// Calculations
+
+    /**
+     * Method used to determine if a entry is an OTHER category.
+     * @return If the category is an OTHER category.
+     */
+    private boolean isOtherCategory(){
+        boolean isOther = category == BudgetCategory.OTHER_EXPENSE || category == BudgetCategory.OTHER_INCOME ? true : false;
+        return isOther;
+    }
 
 }

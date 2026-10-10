@@ -11,7 +11,8 @@ public class User {
     private ArrayList<Investment> listOfInvestments = new ArrayList<>(); // An arraylist of investment objects used to represent all of the investments a user has.
     private ArrayList<Budget> listOfBudgets = new ArrayList<>(); // An Arraylist of budget items used to represent all of the budgets a user has.
 
-// Constructors
+
+// Constructor
 
     /**
      * Constructor that creates a user. Starts with empty debt, investment, and budget lists.
@@ -22,7 +23,43 @@ public class User {
     }
 
 
+// Getters
+
+    /**
+     * Get user's list of debts.
+     * @return List of Debts.
+     */
+    public ArrayList<Debt> getDebts(){
+        return new ArrayList<>(listOfDebts);
+    }
+
+    /**
+     * Get user's list of investments.
+     * @return List of Investments.
+     */
+    public ArrayList<Investment> getInvestments(){
+        return new ArrayList<>(listOfInvestments);
+    }
+
+    /**
+     * Get user's list of budgets.
+     * @return List of Budgets.
+     */
+    public ArrayList<Budget> getBudgets(){
+        return new ArrayList<>(listOfBudgets);
+    }
+
+    /**
+     * Get user's name.
+     * @return User's name.
+     */
+    public String getName(){
+        return name;
+    }
+
+    
 // Setters
+
     /**
      * Method to assign debts to a user.
      * @param newDebt Singular debt to add.
@@ -71,40 +108,6 @@ public class User {
         listOfBudgets.remove(budget);
     }
 
-    
-// Getters
-
-    /**
-     * Get user's list of debts.
-     * @return List of Debts.
-     */
-    public ArrayList<Debt> getDebts(){
-        return new ArrayList<>(listOfDebts);
-    }
-
-    /**
-     * Get user's list of investments.
-     * @return List of Investments.
-     */
-    public ArrayList<Investment> getInvestments(){
-        return new ArrayList<>(listOfInvestments);
-    }
-
-    /**
-     * Get user's list of budgets.
-     * @return List of Budgets.
-     */
-    public ArrayList<Budget> getBudgets(){
-        return new ArrayList<>(listOfBudgets);
-    }
-
-    /**
-     * Get user's name.
-     * @return User's name.
-     */
-    public String getName(){
-        return name;
-    }
 
 // Calculations
 

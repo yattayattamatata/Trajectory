@@ -1,18 +1,19 @@
 package com.trajectory.app.model;
-
 import java.util.ArrayList;
 
 /**
  * Budget class represents 1 month's income and expenses.
  */
-public class Budget {
 
+public class Budget {
     private String name; // Name of this budget.
     private int month, // Int value of month (1-12) that this budget covers.
                 year; // Year that this budget covers.
+
     private ArrayList<BudgetEntry> monthlyEntries = new ArrayList<>(); // A list of all budget entries that make up this budget.
 
-// Constructors
+
+// Constructor
     /**
      * Constructor that builds a new budget item.
      * @param name Name of the budget.
@@ -27,23 +28,24 @@ public class Budget {
 
 
 // Getters
+
     /**
      * Gets the name of this budget.
      * @return Name of budget.
      */
-    public String getBudgetName(){return this.name;}
+    public String getBudgetName(){return name;}
 
     /**
      * Gets the month of this budget.
      * @return Month (1-12) of budget.
      */
-    public int getMonth(){return this.month;}
+    public int getMonth(){return month;}
 
     /**
      * Gets the year of this budget.
      * @return Year of budget.
      */
-    public int getYear(){return this.year;}
+    public int getYear(){return year;}
 
     /**
      * Gets a list of budget item entries.
@@ -53,6 +55,7 @@ public class Budget {
 
 
 // Setters
+
     /**
      * Method to add new budget entries to this budget.
      * @param newEntry Budget entry item that is added.
