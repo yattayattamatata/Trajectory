@@ -12,6 +12,8 @@ public class Debt {
 
     private String label; // Title for this debt.
 
+    private int databaseID = 0; // Object's database ID, default is 0, set once added to SQLite. Nothing else should change this.
+
 
 // Constructor
     /**
@@ -55,6 +57,12 @@ public class Debt {
      */
     public String getLabel(){return label;}
 
+    /**
+     * Get database id for debt.
+     * @return Database id of debt.
+     */
+    public int getDatabaseID(){return databaseID;}
+
 
 //Setters
 
@@ -88,6 +96,14 @@ public class Debt {
      */
     public void setLabel(String newLabel){
         this.label = newLabel;
+    }
+
+    /**
+     * Set database id of a debt. DB USE ONLY!
+     * @param newDatabaseID New database id of a debt.
+     */
+    public void setDatabaseID(int newDatabaseID){
+        this.databaseID = newDatabaseID;
     }
 
 

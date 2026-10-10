@@ -12,6 +12,8 @@ public class Investment {
 
     private String label; // Title for this investment.
 
+    private int databaseID = 0; // Object's database ID, default is 0, set once added to SQLite. Nothing else should change this.
+
 
 //Constructor
     /**
@@ -55,6 +57,12 @@ public class Investment {
      */
     public String getLabel(){return label;}
 
+    /**
+     * Get database id for investment.
+     * @return Database id of investment.
+     */
+    public int getDatabaseID(){return databaseID;}
+
 
 // Setters
 
@@ -89,6 +97,15 @@ public class Investment {
     public void setLabel(String newLabel){
         this.label = newLabel;
     }
+
+   /**
+     * Set database id of an investment. DB USE ONLY!
+     * @param newDatabaseID New database id of an investment.
+     */
+    public void setDatabaseID(int newDatabaseID){
+        this.databaseID = newDatabaseID;
+    }
+
 
 // Calculations
 

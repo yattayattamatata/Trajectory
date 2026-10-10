@@ -11,6 +11,7 @@ public class User {
     private ArrayList<Investment> listOfInvestments = new ArrayList<>(); // An arraylist of investment objects used to represent all of the investments a user has.
     private ArrayList<Budget> listOfBudgets = new ArrayList<>(); // An Arraylist of budget items used to represent all of the budgets a user has.
 
+    private int databaseID = 0; // Object's database ID, default is 0, set once added to SQLite. Nothing else should change this.
 
 // Constructor
 
@@ -57,7 +58,13 @@ public class User {
         return name;
     }
 
+    /**
+     * Get database id for user.
+     * @return Database id of user.
+     */
+    public int getDatabaseID(){return databaseID;}
     
+
 // Setters
 
     /**
@@ -106,6 +113,14 @@ public class User {
      */
     public void removeBudget(Budget budget){
         listOfBudgets.remove(budget);
+    }
+
+    /**
+     * Set database id of a user. DB USE ONLY!
+     * @param newDatabaseID New database id of a user.
+     */
+    public void setDatabaseID(int newDatabaseID){
+        this.databaseID = newDatabaseID;
     }
 
 

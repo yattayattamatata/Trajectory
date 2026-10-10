@@ -11,6 +11,9 @@ public class BudgetEntry {
 
     private double amount; // Amount assigned to this entry.
 
+    private int databaseID = 0; // Object's database ID, default is 0, set once added to SQLite. Nothing else should change this.
+
+
 
 // Constructor
     /**
@@ -54,10 +57,16 @@ public class BudgetEntry {
     public double getAmount(){return this.amount;}
 
     /**
-     * Gets the category type (income or expense) of an budget entry.
+     * Gets the category type (income or expense) of a budget entry.
      * @return Type of entry.
      */
     public BudgetCategory.Type getCategoryType(){return this.category.getType();}
+
+    /**
+     * Get database id for budget entry.
+     * @return Database id of budget entry.
+     */
+    public int getDatabaseID(){return databaseID;}
 
 
 // Setters
@@ -80,11 +89,19 @@ public class BudgetEntry {
      */
     public void setAmount(double newAmount){this.amount = newAmount;}
 
+    /**
+     * Set database id of a budget entry. DB USE ONLY!
+     * @param newDatabaseID New database id of a budget entry.
+     */
+    public void setDatabaseID(int newDatabaseID){
+        this.databaseID = newDatabaseID;
+    }
+
 
 // Calculations
 
     /**
-     * Method used to determine if a entry is an OTHER category.
+     * Method used to determine if a budget entry is a OTHER category.
      * @return If the category is an OTHER category.
      */
     private boolean isOtherCategory(){

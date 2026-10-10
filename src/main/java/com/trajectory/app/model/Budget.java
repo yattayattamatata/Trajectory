@@ -12,6 +12,8 @@ public class Budget {
 
     private ArrayList<BudgetEntry> monthlyEntries = new ArrayList<>(); // A list of all budget entries that make up this budget.
 
+    private int databaseID = 0; // Object's database ID, default is 0, set once added to SQLite. Nothing else should change this.
+
 
 // Constructor
     /**
@@ -33,7 +35,7 @@ public class Budget {
      * Gets the name of this budget.
      * @return Name of budget.
      */
-    public String getBudgetName(){return name;}
+    public String getName(){return name;}
 
     /**
      * Gets the month of this budget.
@@ -52,6 +54,12 @@ public class Budget {
      * @return A copy of the budget entries (copy used so that original values cannot be modified outside of setters and constructor).
      */
     public ArrayList<BudgetEntry> getEntries(){return new ArrayList<>(monthlyEntries);}
+
+    /**
+     * Get database id for budget.
+     * @return Database id of budget.
+     */
+    public int getDatabaseID(){return databaseID;}
 
 
 // Setters
@@ -94,6 +102,14 @@ public class Budget {
      */
     public void setYear(int newYear){
         this.year = newYear;
+    }
+
+    /**
+     * Set database id of a budget. DB USE ONLY!
+     * @param newDatabaseID New database id of a budget.
+     */
+    public void setDatabaseID(int newDatabaseID){
+        this.databaseID = newDatabaseID;
     }
 
 
