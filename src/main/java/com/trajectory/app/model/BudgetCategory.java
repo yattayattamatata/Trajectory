@@ -8,26 +8,26 @@ import java.util.ArrayList;
 public enum BudgetCategory {
 
     // Income Categories
-    SALARY(Type.INCOME,"Salary"),
-    SIDE_INCOME(Type.INCOME,"Side Income"),
-    INVESTMENT_INCOME(Type.INCOME,"Investment Income"),
-    OTHER_INCOME(Type.INCOME,"Other Income"),
+    SALARY                  (Type.INCOME,"Salary"),
+    SIDE_INCOME             (Type.INCOME,"Side Income"),
+    INVESTMENT_INCOME       (Type.INCOME,"Investment Income"),
+    OTHER_INCOME            (Type.INCOME,"Other Income"),
 
     //Expense Categories
-    HOUSING(Type.EXPENSE,"Housing"),
-    UTILITIES(Type.EXPENSE,"Utilities"),
-    GROCERIES(Type.EXPENSE,"Groceries"),
-    TRANSPORTATION(Type.EXPENSE,"Transportation"),
-    INSURANCE(Type.EXPENSE,"Insurance"),
-    HEALTHCARE(Type.EXPENSE,"Healthcare"),
-    DINING(Type.EXPENSE,"Dining Out"),
-    SHOPPING(Type.EXPENSE, "Shopping"),
-    ENTERTAINMENT(Type.EXPENSE,"Entertainment"),
-    SUBSCRIPTIONS(Type.EXPENSE,"Subscriptions"),
-    DEBT_PAYMENTS(Type.EXPENSE,"Debt Payments"),
-    SAVINGS(Type.EXPENSE,"Saving Contributions"),
-    INVESTMENTS(Type.EXPENSE,"Investment Contributions"),
-    OTHER_EXPENSE(Type.EXPENSE,"Other Expense");
+    HOUSING                 (Type.EXPENSE,"Housing"),
+    UTILITIES               (Type.EXPENSE,"Utilities"),
+    GROCERIES               (Type.EXPENSE,"Groceries"),
+    TRANSPORTATION          (Type.EXPENSE,"Transportation"),
+    INSURANCE               (Type.EXPENSE,"Insurance"),
+    HEALTHCARE              (Type.EXPENSE,"Healthcare"),
+    DINING                  (Type.EXPENSE,"Dining Out"),
+    SHOPPING                (Type.EXPENSE, "Shopping"),
+    ENTERTAINMENT           (Type.EXPENSE,"Entertainment"),
+    SUBSCRIPTIONS           (Type.EXPENSE,"Subscriptions"),
+    DEBT_PAYMENTS           (Type.EXPENSE,"Debt Payments"),
+    SAVINGS                 (Type.EXPENSE,"Saving Contributions"),
+    INVESTMENTS             (Type.EXPENSE,"Investment Contributions"),
+    OTHER_EXPENSE           (Type.EXPENSE,"Other Expense");
 
 
     /**
