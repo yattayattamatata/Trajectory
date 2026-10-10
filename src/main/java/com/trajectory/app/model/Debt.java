@@ -121,14 +121,14 @@ public class Debt {
     /**
      * Method to project repayment timeline. Returns impossible if the payment is not more than the interest accrued.
      * @param monthlyPayment Amount paid towards debt.
-     * @return DebtPayoffFeasibility object that contains whether it is possible to payoff the debt, and if it is, it contains how long and what the cost of the debt is
+     * @return DebtPayoffResult object that contains whether it is possible to payoff the debt, and if it is, it contains how long and what the cost of the debt is
      */
-    public DebtPayoffFeasibility projectPayoffTimeline(double monthlyPayment){
+    public DebtPayoffResult projectPayoffTimeline(double monthlyPayment){
 
         double startingInterest = calculateMonthlyInterest();
 
         if (monthlyPayment <= startingInterest) { // If the monthly payment is less than or equal to the starting interest, then the balance would never get smaller.
-            return DebtPayoffFeasibility.impossible();
+            return DebtPayoffResult.impossible();
         }
 
         double runningBalance = balance; // Holds the balance that is paid down month to month.
@@ -149,6 +149,6 @@ public class Debt {
             monthsUntilPayoff++; // Add a month to the running total.
         }
 
-        return DebtPayoffFeasibility.possible(monthsUntilPayoff, totalInterestPaid, monthlyBalances); // When debt repayment fully calculated create a feasibility object that reflects this debt's details.
+        return DebtPayoffResult.possible(monthsUntilPayoff, totalInterestPaid, monthlyBalances); // When debt repayment fully calculated create a Result object that reflects this debt's details.
     }
 }

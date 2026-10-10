@@ -58,7 +58,7 @@ public class Driver {
             System.out.println("\nWhat monthly payment do you want to test for " + debt.getLabel() + "?");
             double testPayment = Double.parseDouble(scnr.nextLine());
 
-            DebtPayoffFeasibility result = debt.projectPayoffTimeline(testPayment);
+            DebtPayoffResult result = debt.projectPayoffTimeline(testPayment);
 
             if (!result.isPossible()){
                 System.out.println("At $" + testPayment + "/month, " + debt.getLabel() + " can never get paid off (payment is less than interest accrued)!");

@@ -2,10 +2,10 @@ package com.trajectory.app.model;
 import java.util.ArrayList;
 
 /**
- * DebtPayoffFeasibility is a helper class for Debt
+ * DebtPayoffResult is a helper class for Debt
  */
 
-public class DebtPayoffFeasibility {
+public class DebtPayoffResult {
     private boolean isPossible;
     private int monthsToPayoff;
     private double totalInterestPaid;
@@ -20,7 +20,7 @@ public class DebtPayoffFeasibility {
      * @param totalInterestPaid Amount of interest paid.
      * @param monthlyBalance List of doubles that show monthly balance over time.
      */
-    private DebtPayoffFeasibility(boolean isPossible, int monthsToPayoff, double totalInterestPaid, ArrayList<Double> monthlyBalance){
+    private DebtPayoffResult(boolean isPossible, int monthsToPayoff, double totalInterestPaid, ArrayList<Double> monthlyBalance){
         this.isPossible = isPossible;
         this.monthsToPayoff = monthsToPayoff;
         this.totalInterestPaid = totalInterestPaid;
@@ -53,8 +53,8 @@ public class DebtPayoffFeasibility {
      * Method used when a debt payoff is not possible. Static so it can be called without an existing object; allowing the standardized object to be created.
      * @return Returns a standard impossible debt payoff object.
      */
-    public static DebtPayoffFeasibility impossible(){
-        return new DebtPayoffFeasibility(false, 0, 0.0, new ArrayList<Double>());
+    public static DebtPayoffResult impossible(){
+        return new DebtPayoffResult(false, 0, 0.0, new ArrayList<Double>());
     }
 
     /**
@@ -64,8 +64,8 @@ public class DebtPayoffFeasibility {
      * @param monthlyBalance List of doubles that show monthly balance over time.
      * @return Returns the possible debt payoff object.
      */
-    public static DebtPayoffFeasibility possible(int monthsToPayoff, double totalInterestPaid, ArrayList<Double> monthlyBalance){
-        return new DebtPayoffFeasibility(true, monthsToPayoff, totalInterestPaid, monthlyBalance);
+    public static DebtPayoffResult possible(int monthsToPayoff, double totalInterestPaid, ArrayList<Double> monthlyBalance){
+        return new DebtPayoffResult(true, monthsToPayoff, totalInterestPaid, monthlyBalance);
     }
 
 }
