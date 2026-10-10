@@ -14,8 +14,8 @@ public class BudgetDriver {
         october.addEntry(new BudgetEntry("Dentist", BudgetCategory.OTHER_EXPENSE, 250.50));
         user.addBudget(october);
 
-        System.out.println(october.calculateTotalIncome());     // expect 2800.0
-        System.out.println(october.calculateTotalExpense());    // expect 1450.5
+        System.out.println(october.calculateTotalIncome()); // expect 2800.0
+        System.out.println(october.calculateTotalExpense()); // expect 1450.5
         System.out.println(october.calculateRemainingBudget()); // expect 1349.5
 
         for (BudgetEntry entry : october.getEntries()) {
@@ -28,6 +28,6 @@ public class BudgetDriver {
         // The description follows the category, even after an edit
         BudgetEntry housing = october.getEntries().get(2);
         housing.setBudgetCategory(BudgetCategory.GROCERIES);
-        System.out.println(housing.getDescription());           // expect Groceries
+        System.out.println(housing.getDescription()); // expect Groceries
     }
 }
