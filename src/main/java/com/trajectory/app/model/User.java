@@ -2,19 +2,19 @@ package com.trajectory.app.model;
 import java.util.ArrayList;
 
 /**
- * User Class that holds basic info about the user
+ * User Class that holds basic info about the user.
  */
 
 public class User {
     private String name; // User identifying information.
     private ArrayList<Debt> listOfDebts = new ArrayList<>(); // An arraylist of debt objects used to represent all of the debts a user has. 
     private ArrayList<Investment> listOfInvestments = new ArrayList<>(); // An arraylist of investment objects used to represent all of the investments a user has.
-//    private Budget myBudget; // A budget item representing this user's current budget.
+    private ArrayList<Budget> listOfBudgets = new ArrayList<>(); // An Arraylist of budget items used to represent all of the budgets a user has.
 
 // Constructors
 
     /**
-     * Constructor that creates a user. Starts with empty debt and investment lists.
+     * Constructor that creates a user. Starts with empty debt, investment, and budget lists.
      * @param name Name of the user
      */
     public User(String name){
@@ -25,21 +25,53 @@ public class User {
 // Setters
     /**
      * Method to assign debts to a user.
-     * @param debt Singular debt to add.
+     * @param newDebt Singular debt to add.
      */
-    public void addDebt(Debt debt){
-        listOfDebts.add(debt);
+    public void addDebt(Debt newDebt){
+        listOfDebts.add(newDebt);
+    }
+
+    /**
+     * Method to remove debt from a user.
+     * @param debt Debt to remove.
+     */
+    public void removeDebt(Debt debt){
+        listOfDebts.remove(debt);
     }
 
     /**
      * Method to assign investments to a user.
-     * @param investment Singular investment to add.
+     * @param newInvestment Singular investment to add.
      */
-    public void addInvestment(Investment investment){
-        listOfInvestments.add(investment);
+    public void addInvestment(Investment newInvestment){
+        listOfInvestments.add(newInvestment);
     }
 
+    /**
+     * Method to remove investments from a user.
+     * @param investment Investment to remove.
+     */
+    public void removeInvestment(Investment investment){
+        listOfInvestments.remove(investment);
+    }
 
+    /**
+     * Method to assign budgets to a user.
+     * @param newBudget Singular budget to add.
+     */
+    public void addBudget(Budget newBudget){
+        listOfBudgets.add(newBudget);
+    }
+
+    /**
+     * Method to remove budgets from a user.
+     * @param budget Budget to remove.
+     */
+    public void removeBudget(Budget budget){
+        listOfBudgets.remove(budget);
+    }
+
+    
 // Getters
 
     /**
@@ -47,7 +79,7 @@ public class User {
      * @return List of Debts.
      */
     public ArrayList<Debt> getDebts(){
-        return this.listOfDebts;
+        return new ArrayList<>(listOfDebts);
     }
 
     /**
@@ -55,7 +87,15 @@ public class User {
      * @return List of Investments.
      */
     public ArrayList<Investment> getInvestments(){
-        return this.listOfInvestments;
+        return new ArrayList<>(listOfInvestments);
+    }
+
+    /**
+     * Get user's list of budgets.
+     * @return List of Budgets.
+     */
+    public ArrayList<Budget> getBudgets(){
+        return new ArrayList<>(listOfBudgets);
     }
 
     /**

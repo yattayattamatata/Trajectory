@@ -43,6 +43,7 @@ public enum BudgetCategory {
     private final String guiName; // Name that is displayed in GUI.
     
 
+// Constructors
     /**
      * Constructor that gives each category specific traits.
      * @param type Income or Expense.
@@ -53,6 +54,7 @@ public enum BudgetCategory {
         this.guiName = guiName;
     }
 
+
 // Getters
     /**
      * Method used to get a category type.
@@ -62,7 +64,6 @@ public enum BudgetCategory {
         return this.type;
     }
 
-
     /**
      * Method used to get a category's displayed name.
      * @return Name of a category for display.
@@ -70,7 +71,6 @@ public enum BudgetCategory {
     public String getGUIName(){
         return this.guiName;
     }
-
 
     /**
      * Method used to get a list of all possible categories belonging to a specific type.
