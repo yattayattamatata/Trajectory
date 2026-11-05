@@ -14,6 +14,9 @@ public class Driver {
         System.out.println("Please enter your name:");
         User newUser = new User(scnr.nextLine());
 
+        UserRepository userRepository = new UserRepository();
+        userRepository.save(newUser);
+
     //Get debts
         while(true){
             System.out.println("\nDo you have a debt to enter? (Y/N)");
