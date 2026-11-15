@@ -1,0 +1,64 @@
+---
+title: Create a Budget - Class Diagram
+---
+classDiagram
+    direction TB
+
+    class BudgetView {}
+    class Controller {
+        -currentUser: User
+        +createBudget(name, month, year)
+        +addBudgetEntry(budget, category, amount)
+    }
+    class Validator {
+        +validateBudgetFields(...)
+        +validateEntryFields(...)
+    }
+    class User {
+        -listOfBudgets: ArrayList~Budget~
+        +addBudget(budget)
+    }
+    class Budget {
+        -name: String
+        -month: int
+        -year: int
+        -monthlyEntries: ArrayList~BudgetEntry~
+        -databaseID: int
+        +addEntry(entry)
+        +calculateTotalIncome() double
+        +calculateTotalExpense() double
+        +calculateRemainingBudget() double
+    }
+    class BudgetEntry {
+        -category: BudgetCategory
+        -amount: double
+        +getCategoryType() Type
+        +getAmount() double
+    }
+    class BudgetCategory {
+        <<enumeration>>
+    }
+    class Limits {
+        +MINIMUM_MONTH_VALUE: int
+        +MAXIMUM_MONTH_VALUE: int
+    }
+
+    BudgetView --> Controller
+    BudgetView --> Validator
+    Validator ..> Limits
+    Controller --> User : currentUser
+    Controller ..> Budget
+    Controller ..> BudgetEntry
+    User "1" *-- "0..*" Budget
+    Budget "1" *-- "0..*" BudgetEntry
+    BudgetEntry --> BudgetCategory
+
+%% Relationships Reference
+%% classA --|> classB : Inheritance
+%% classC --* classD : Composition
+%% classE --o classF : Aggregation
+%% classG --> classH : Association
+%% classI -- classJ : Link(Solid)
+%% classK ..> classL : Dependency
+%% classM ..|> classN : Realization
+%% classO .. classP : Link(Dashed)

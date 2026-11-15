@@ -1,0 +1,53 @@
+---
+title: View a Debt Projection - Class Diagram
+---
+classDiagram
+    direction TB
+
+    class DebtView {}
+    class Controller {
+        +projectDebt(debt, payment) DebtPayoffResult
+    }
+    class Validator {
+        +validatePayment(...)
+    }
+    class Debt {
+        -balance: double
+        -aprDecimal: double
+        -minimumPayment: double
+        -label: String
+        -databaseID: int
+        +calculateMonthlyInterest() double
+        +projectPayoffTimeline(monthlyPayment) DebtPayoffResult
+    }
+    class DebtPayoffResult {
+        -isPossible: boolean
+        -monthsToPayoff: int
+        -totalInterestPaid: double
+        -monthlyBalance: ArrayList~Double~
+        +isPossible() boolean
+        +getMonthsToPayoff() int
+        +getTotalInterestPaid() double
+        +getMonthlyBalance() ArrayList~Double~
+    }
+    class Limits {
+        +MAX_PROJECTION_YEARS: int
+        +MAX_PROJECTION_MONTHS: int
+    }
+
+    DebtView --> Controller
+    DebtView --> Validator
+    Validator ..> Limits
+    Controller ..> Debt
+    Debt ..> DebtPayoffResult
+    Debt ..> Limits
+
+%% Relationships Reference
+%% classA --|> classB : Inheritance
+%% classC --* classD : Composition
+%% classE --o classF : Aggregation
+%% classG --> classH : Association
+%% classI -- classJ : Link(Solid)
+%% classK ..> classL : Dependency
+%% classM ..|> classN : Realization
+%% classO .. classP : Link(Dashed)

@@ -35,6 +35,8 @@ sequenceDiagram
                 C ->> E: Create entry (category, amount)
                 C ->>+ B: addEntry(newEntry)
                 B -->>- C: Confirm entry added
+                C ->>+ B: Get totals (income, expense, remaining)
+                B -->>- C: Return totals
                 C -->>- UI: Return updated totals
                 UI -->> FU: Display entry and updated totals
             end

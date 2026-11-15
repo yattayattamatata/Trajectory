@@ -1,0 +1,41 @@
+---
+title: Add a Debt - Class Diagram
+---
+classDiagram
+    direction TB
+
+    class DebtView {}
+    class Controller {
+        -currentUser: User
+        +createDebt(label, balance, apr, minPayment)
+    }
+    class Validator {
+        +validateDebtFields(...)
+    }
+    class User {
+        -listOfDebts: ArrayList~Debt~
+        +addDebt(debt)
+    }
+    class Debt {
+        -balance: double
+        -aprDecimal: double
+        -minimumPayment: double
+        -label: String
+        -databaseID: int
+    }
+
+    DebtView --> Controller
+    DebtView --> Validator
+    Controller --> User : currentUser
+    Controller ..> Debt
+    User "1" *-- "0..*" Debt
+
+%% Relationships Reference
+%% classA --|> classB : Inheritance
+%% classC --* classD : Composition
+%% classE --o classF : Aggregation
+%% classG --> classH : Association
+%% classI -- classJ : Link(Solid)
+%% classK ..> classL : Dependency
+%% classM ..|> classN : Realization
+%% classO .. classP : Link(Dashed)

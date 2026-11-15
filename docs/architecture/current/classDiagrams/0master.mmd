@@ -15,12 +15,13 @@ classDiagram
         +createDebt(label, balance, apr, minPayment)
         +createBudget(name, month, year)
         +addBudgetEntry(budget, category, amount)
-        +projectDebt(debtID, payment) DebtPayoffResult
+        +projectDebt(debt, payment) DebtPayoffResult
         +projectInvestment(balance, apy, contribution, years)
         +loadUser(userID)
     }
     class Validator {
         +validateDebtFields(...)
+        +validatePayment(...)
         +validateBudgetFields(...)
         +validateEntryFields(...)
         +validateInvestmentFields(...)
@@ -130,9 +131,9 @@ classDiagram
     Validator ..> Limits
     Controller --> User : currentUser
     Controller --> UserRepository
-    Controller --> DebtRepository
-    Controller --> InvestmentRepository
-    Controller --> BudgetRepository
+    UserRepository --> DebtRepository
+    UserRepository --> InvestmentRepository
+    UserRepository --> BudgetRepository
     UserRepository ..> User
     DebtRepository ..> Debt
     InvestmentRepository ..> Investment

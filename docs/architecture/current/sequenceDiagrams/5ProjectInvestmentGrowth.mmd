@@ -17,7 +17,7 @@ sequenceDiagram
     else All fields valid
         UI ->>+ C: Request growth projection (balance, APY, contribution, years)
         create participant I as newInvestment:Investment
-        C ->> I: Create investment (balance, APY, contribution)
+        C ->> I: Create investment (balance, APY, contribution, default label)
         C ->>+ I: growthOverTime(years)
         I ->>+ CIC: Calculate balance for each year
         loop each year up to the requested years

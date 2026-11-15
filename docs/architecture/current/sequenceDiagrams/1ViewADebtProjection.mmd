@@ -6,7 +6,6 @@ sequenceDiagram
     participant UI as :UserInterface
     participant V as :Validator
     participant C as :Controller
-    participant U as :User
     participant D as selectedDebt:Debt
 
     FU ->>+ UI: Select debt, enter proposed payment, click View Projection
@@ -16,9 +15,7 @@ sequenceDiagram
     alt Payment invalid
         UI -->> FU: Display error beside the payment field
     else Payment valid
-        UI ->>+ C: Request projection (debtID, payment)
-        C ->>+ U: Get debt (debtID)
-        U -->>- C: Return selectedDebt
+        UI ->>+ C: Request projection (selectedDebt, payment)
         C ->>+ D: projectPayoffTimeline(payment)
         loop each month, up to the maximum projection period
             D ->> D: Calculate interest, apply payment, record balance

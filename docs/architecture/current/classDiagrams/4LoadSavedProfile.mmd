@@ -1,0 +1,86 @@
+---
+title: Load a Saved Profile - Class Diagram
+---
+classDiagram
+    direction TB
+
+    class DashboardView {}
+    class Controller {
+        -currentUser: User
+        +loadUser(userID)
+    }
+    class UserRepository {
+    }
+    class DebtRepository {
+    }
+    class InvestmentRepository {
+    }
+    class BudgetRepository {
+    }
+    class DatabaseManager {
+    }
+    class User {
+        -name: String
+        -listOfDebts: ArrayList~Debt~
+        -listOfInvestments: ArrayList~Investment~
+        -listOfBudgets: ArrayList~Budget~
+        +addDebt(debt)
+        +addInvestment(investment)
+        +addBudget(budget)
+    }
+    class Debt {
+        -balance: double
+        -aprDecimal: double
+        -minimumPayment: double
+        -label: String
+        -databaseID: int
+        +setDatabaseID(id)
+    }
+    class Investment {
+        -balance: double
+        -apyDecimal: double
+        -monthlyContribution: double
+        -label: String
+    }
+    class Budget {
+        -name: String
+        -month: int
+        -year: int
+        -monthlyEntries: ArrayList~BudgetEntry~
+        -databaseID: int
+        +addEntry(entry)
+    }
+    class BudgetEntry {
+        -category: BudgetCategory
+        -amount: double
+    }
+
+    DashboardView --> Controller
+    Controller --> User : currentUser
+    Controller --> UserRepository
+    UserRepository --> DebtRepository
+    UserRepository --> InvestmentRepository
+    UserRepository --> BudgetRepository
+    UserRepository ..> User
+    DebtRepository ..> Debt
+    InvestmentRepository ..> Investment
+    BudgetRepository ..> Budget
+    BudgetRepository ..> BudgetEntry
+    UserRepository --> DatabaseManager
+    DebtRepository --> DatabaseManager
+    InvestmentRepository --> DatabaseManager
+    BudgetRepository --> DatabaseManager
+    User "1" *-- "0..*" Debt
+    User "1" *-- "0..*" Investment
+    User "1" *-- "0..*" Budget
+    Budget "1" *-- "0..*" BudgetEntry
+
+%% Relationships Reference
+%% classA --|> classB : Inheritance
+%% classC --* classD : Composition
+%% classE --o classF : Aggregation
+%% classG --> classH : Association
+%% classI -- classJ : Link(Solid)
+%% classK ..> classL : Dependency
+%% classM ..|> classN : Realization
+%% classO .. classP : Link(Dashed)

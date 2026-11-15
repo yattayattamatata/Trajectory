@@ -1,0 +1,48 @@
+---
+title: Project Investment Growth - Class Diagram
+---
+classDiagram
+    direction TB
+
+    class InvestmentView {}
+    class Controller {
+        +projectInvestment(balance, apy, contribution, years)
+    }
+    class Validator {
+        +validateInvestmentFields(...)
+    }
+    class Investment {
+        -balance: double
+        -apyDecimal: double
+        -monthlyContribution: double
+        -label: String
+        +growthOverTime(years) ArrayList~Double~
+    }
+    class CompoundInterestCalculator {
+        -principalAmount: double
+        -rate: double
+        -periodicContribution: double
+        -numberOfCompoundsPerYear: int
+        -numberYears: int
+        +getAmountOverTime() double
+        +getBalanceOverTime() ArrayList~Double~
+    }
+    class Limits {
+        +MAX_PROJECTION_YEARS: int
+    }
+
+    InvestmentView --> Controller
+    InvestmentView --> Validator
+    Validator ..> Limits
+    Controller ..> Investment
+    Investment ..> CompoundInterestCalculator : uses
+
+%% Relationships Reference
+%% classA --|> classB : Inheritance
+%% classC --* classD : Composition
+%% classE --o classF : Aggregation
+%% classG --> classH : Association
+%% classI -- classJ : Link(Solid)
+%% classK ..> classL : Dependency
+%% classM ..|> classN : Realization
+%% classO .. classP : Link(Dashed)
