@@ -38,7 +38,7 @@
 ## **Mermaid Modeling Tool**
 
 ### Video explaining/demonstrating how to use mermaid in the browser to create class/sequence diagrams
-&emsp; https://www.youtube.com/watch?v=aMMDMQvSzmc&t=1295s
+&emsp; https://www.youtube.com/watch?v=aMMDMQvSzmc
 
-### Mermaid documentation (On the left side there is Swimlanes Diagrams for activity diagrams, class diagram, and sequence diagrams)
+### Mermaid documentation (On the left side there are references for swimlanes diagrams (activity diagrams), class diagrams, and sequence diagrams)
 &emsp; https://mermaid.js.org/syntax/sequenceDiagram.html
