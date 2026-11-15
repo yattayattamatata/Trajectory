@@ -1,0 +1,133 @@
+<mxfile host="65bd71144e" scale="1" border="20">
+    <diagram id="-idnMOONMi12_C2JdjpQ" name="Page-1">
+        <mxGraphModel dx="912" dy="714" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="9" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;strokeWidth=2;endSize=10;startSize=7;fontFamily=JetBrainsMono Nerd Font;align=center;verticalAlign=middle;" edge="1" parent="1" source="2" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="" style="ellipse;fillColor=strokeColor;fontFamily=JetBrainsMono Nerd Font;align=center;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="630" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="No Profile Loaded" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="625" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Active Profile Saved" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="670" y="625" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Active Profile Unsaved" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="665" y="775" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Saving" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="637" y="955" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Save Failed" style="html=1;align=center;verticalAlign=middle;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="955" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="select profile [user found]&lt;br&gt;/set current user &amp;amp; display profile" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="605" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="select profile [user not found or DB error]&lt;br&gt;/show error" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="715" width="330" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="endArrow=open;html=1;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;startSize=6;endSize=10;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="3" target="5">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="810" y="835" as="sourcePoint"/>
+                        <mxPoint x="860" y="785" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="" style="endArrow=open;html=1;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;startSize=6;endSize=10;exitX=1;exitY=0.75;exitDx=0;exitDy=0;endFill=0;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="3">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="380" y="655" as="sourcePoint"/>
+                        <mxPoint x="430" y="715" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="410" y="655"/>
+                            <mxPoint x="410" y="715"/>
+                            <mxPoint x="300" y="715"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="" style="endArrow=open;html=1;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;startSize=6;endSize=10;endFill=0;edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="6">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1150" y="815" as="sourcePoint"/>
+                        <mxPoint x="750" y="715" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="add, edit, or delete data" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="750" y="695" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="endArrow=open;html=1;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;startSize=6;endSize=10;endFill=0;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="6" target="6">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="870" y="775" as="sourcePoint"/>
+                        <mxPoint x="750" y="815" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="850" y="845"/>
+                            <mxPoint x="750" y="845"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="add, edit, or delete data" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="850" y="805" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="endArrow=open;html=1;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;startSize=6;endSize=10;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endFill=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="6" target="7">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="380" y="655" as="sourcePoint"/>
+                        <mxPoint x="680" y="655" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="save" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="705" y="880" width="50" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="endArrow=open;html=1;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;startSize=6;endSize=10;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endFill=0;edgeStyle=orthogonalEdgeStyle;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="5">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="790.0000000000005" y="974.72" as="sourcePoint"/>
+                        <mxPoint x="900" y="655" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1080" y="975"/>
+                            <mxPoint x="1080" y="645"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="[success]/show success message" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="945" width="240" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="" style="endArrow=open;html=1;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;startSize=6;endSize=10;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endFill=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="7" target="8">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="360" y="894.6800000000001" as="sourcePoint"/>
+                        <mxPoint x="660" y="894.6800000000001" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="[failure]/show error message,&lt;br&gt;keep user data" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="390" y="935" width="230" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="endArrow=open;html=1;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;startSize=6;endSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endFill=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="8" target="7">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="290" y="1065" as="sourcePoint"/>
+                        <mxPoint x="590" y="1065" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="300" y="1045"/>
+                            <mxPoint x="707" y="1045"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="retry save" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="1015" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="" style="endArrow=open;html=1;strokeWidth=2;fontFamily=JetBrainsMono Nerd Font;startSize=6;endSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;endFill=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="5" target="3">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="760" y="575.0000000000001" as="sourcePoint"/>
+                        <mxPoint x="1060" y="575.0000000000001" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="750" y="570"/>
+                            <mxPoint x="335" y="570"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="33" value="switch profile/close current profile" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=JetBrainsMono Nerd Font;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="540" width="280" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

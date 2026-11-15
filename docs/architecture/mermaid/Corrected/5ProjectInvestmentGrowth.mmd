@@ -1,0 +1,31 @@
+---
+title: Project Investment Growth
+---
+sequenceDiagram
+    actor FU as Tom: Finance User
+    participant UI as :UserInterface
+    participant V as :Validator
+    participant C as :Controller
+    participant CIC as :CompoundInterestCalculator
+
+    FU ->>+ UI: Enter starting balance, APY, monthly contribution, and years, click Project Growth
+    UI ->>+ V: Validate investment fields
+    V -->>- UI: Return field errors (if any)
+
+    alt Any field invalid
+        UI -->> FU: Display error beside each invalid field
+    else All fields valid
+        UI ->>+ C: Request growth projection (balance, APY, contribution, years)
+        create participant I as newInvestment:Investment
+        C ->> I: Create investment (balance, APY, contribution)
+        C ->>+ I: growthOverTime(years)
+        I ->>+ CIC: Calculate balance for each year
+        loop each year up to the requested years
+            CIC ->> CIC: Apply interest and monthly contributions
+        end
+        CIC -->>- I: Return yearly balances
+        I -->>- C: Return yearly balances
+        C -->>- UI: Return yearly balances
+        UI -->> FU: Display projected balance by year (graph and table) with estimates disclaimer
+    end
+    deactivate UI
