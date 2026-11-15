@@ -1,0 +1,28 @@
+swimlane-beta TB
+  subgraph user [Finance User]
+    S((Start))
+    A1[Enter starting balance, APY, monthly contribution, and years]
+    A2[Click Project Growth]
+    E((End))
+  end
+  subgraph ui [User Interface]
+    B1[Validate investment fields]
+    D1{All fields valid?}
+    B2[Display error beside each invalid field]
+    B3[Display projected balance by year with estimates disclaimer]
+  end
+  subgraph ctrl [Controller]
+    C1[Request growth projection]
+    C2[Return yearly balances]
+  end
+  subgraph model [Model]
+    M1[Create investment]
+    M2[Apply interest and monthly contributions for the year]
+    D2{All requested years calculated?}
+    M3[Return yearly balances]
+  end
+  S --> A1 --> A2 --> B1 --> D1
+  D1 -->|No| B2 --> A1
+  D1 -->|Yes| C1 --> M1 --> M2 --> D2
+  D2 -->|No| M2
+  D2 -->|Yes| M3 --> C2 --> B3 --> E

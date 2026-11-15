@@ -1,0 +1,27 @@
+swimlane-beta TB
+  subgraph user [Finance User]
+    S((Start))
+    A1[Select profile]
+    A2[Click Load]
+    E((End))
+  end
+  subgraph ui [User Interface]
+    B0[Send load request]
+    B1[Show profile]
+    B2[Show error message]
+  end
+  subgraph ctrl [Controller]
+    C1[Request user with ID]
+    C2[Store loaded user as current user]
+    C3[Return error]
+  end
+  subgraph repo [Repositories]
+    R1[Get user row]
+    D1{User found?}
+    R2[Create user]
+    R3[Load debts, investments, and budgets with entries]
+    R4[Add debts, investments, and budgets to user]
+  end
+  S --> A1 --> A2 --> B0 --> C1 --> R1 --> D1
+  D1 -->|Yes| R2 --> R3 --> R4 --> C2 --> B1 --> E
+  D1 -->|No| C3 --> B2 --> E

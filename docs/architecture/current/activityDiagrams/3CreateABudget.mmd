@@ -1,0 +1,43 @@
+swimlane-beta TB
+  subgraph user [Finance User]
+    S((Start))
+    A1[Select Create Budget]
+    A2[Enter budget name, month, and year]
+    A3[Click Create Budget]
+    A4[Select category and enter amount]
+    A5[Click Add Entry]
+    D3{Add another entry?}
+    E((End))
+  end
+  subgraph ui [User Interface]
+    B1[Validate budget fields]
+    D1{All fields valid?}
+    B2[Display error beside each invalid field]
+    B3[Display empty budget ready for entries]
+    B4[Validate entry fields]
+    D2{All fields valid?}
+    B5[Display error beside each invalid field]
+    B6[Display entry and updated totals]
+    B7[Show budget in the budget list]
+  end
+  subgraph ctrl [Controller]
+    C1[Request create budget]
+    C2[Return new budget]
+    C3[Request add entry]
+    C4[Return updated totals]
+  end
+  subgraph model [Model]
+    M1[Create budget]
+    M2[Add budget to active user]
+    M3[Create entry]
+    M4[Add entry to budget]
+    M5[Calculate income, expense, and remaining totals]
+  end
+  S --> A1 --> A2 --> A3 --> B1 --> D1
+  D1 -->|No| B2 --> A2
+  D1 -->|Yes| C1 --> M1 --> M2 --> C2 --> B3 --> A4
+  A4 --> A5 --> B4 --> D2
+  D2 -->|No| B5 --> A4
+  D2 -->|Yes| C3 --> M3 --> M4 --> M5 --> C4 --> B6 --> D3
+  D3 -->|Yes| A4
+  D3 -->|No| B7 --> E

@@ -1,0 +1,25 @@
+swimlane-beta TB
+  subgraph user [Finance User]
+    S((Start))
+    A1[Select Add a Debt]
+    A2[Enter label, balance, APR, and minimum payment]
+    A3[Click Add Debt]
+    E((End))
+  end
+  subgraph ui [User Interface]
+    B1[Validate debt fields]
+    D1{All fields valid?}
+    B2[Display error beside each invalid field]
+    B3[Show new debt in the debt list]
+  end
+  subgraph ctrl [Controller]
+    C1[Request add debt]
+    C2[Confirm debt added]
+  end
+  subgraph model [Model]
+    M1[Create debt]
+    M2[Add debt to active user]
+  end
+  S --> A1 --> A2 --> A3 --> B1 --> D1
+  D1 -->|No| B2 --> A2
+  D1 -->|Yes| C1 --> M1 --> M2 --> C2 --> B3 --> E
