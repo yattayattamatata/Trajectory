@@ -1,4 +1,4 @@
-# **Reference Videos and Documents** 
+# **Reference Videos and Documents**
 <br>
 
 ## **JavaFX/SceneBuilder/GUI tools**
@@ -34,3 +34,11 @@
 
 ### Video that explains ENUMs (I used this to create the Budget categories in BudgetCategory)
 &emsp;Java Enums Explained in 6 Minutes - https://www.youtube.com/watch?v=wq9SJb8VeyM
+
+## **Mermaid Modeling Tool**
+
+### Video explaining/demonstrating how to use mermaid in the browser to create class/sequence diagrams
+&emsp; https://www.youtube.com/watch?v=aMMDMQvSzmc&t=1295s
+
+### Mermaid documentation (On the left side there is Swimlanes Diagrams for activity diagrams, class diagram, and sequence diagrams)
+&emsp; https://mermaid.js.org/syntax/sequenceDiagram.html
