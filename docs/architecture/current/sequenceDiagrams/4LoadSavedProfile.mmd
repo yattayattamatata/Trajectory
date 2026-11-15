@@ -1,0 +1,63 @@
+---
+title: Load a Saved Profile
+---
+sequenceDiagram
+    actor FU as Tom: Finance User
+    participant UI as :UserInterface
+    participant C as :Controller
+    participant DBH as :DatabaseHandler
+    participant DB as :SQLite Database
+
+    FU ->>+ UI: Select profile and click Load
+    UI ->>+ C: Request user with ID
+    C ->>+ DBH: Load user with ID
+    DBH ->>+ DB: Get user row
+    DB -->>- DBH: Return user row
+
+    alt User found
+        create participant LU as loadedUser:User
+        DBH ->> LU: Create user
+        DBH ->>+ DB: Get Debt, Investment, and Budget rows
+        DB -->>- DBH: Return Debt, Investment, and Budget rows
+
+        loop each Debt row
+            create participant DE as :Debt
+            DBH ->> DE: Create debt
+            DBH ->>+ LU: Add debt to user
+            deactivate LU
+        end
+
+        loop each Investment row
+            create participant IN as :Investment
+            DBH ->> IN: Create investment
+            DBH ->>+ LU: Add investment to user
+            deactivate LU
+        end
+
+        loop each Budget row
+            create participant BU as :Budget
+            DBH ->> BU: Create budget
+            DBH ->>+ DB: Get BudgetEntry rows
+            DB -->>- DBH: Return BudgetEntry rows
+            loop each BudgetEntry row
+                create participant BE as :BudgetEntry
+                DBH ->> BE: Create budget entry
+                DBH ->>+ BU: Add entry to budget
+                deactivate BU
+            end
+            DBH ->>+ LU: Add budget to user
+            deactivate LU
+        end
+
+        DBH -->> C: Return loadedUser
+        C ->> C: Store loadedUser as currentUser
+        C -->> UI: Return currentUser
+        UI -->> FU: Show profile
+    else User not found or database error
+        DBH -->> C: Return error
+        C -->> UI: Return error
+        UI -->> FU: Show error message
+    end
+    deactivate DBH
+    deactivate C
+    deactivate UI

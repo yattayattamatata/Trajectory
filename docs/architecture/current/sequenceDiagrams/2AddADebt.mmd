@@ -1,0 +1,26 @@
+---
+title: Add a Debt
+---
+sequenceDiagram
+    actor FU as Tom: Finance User
+    participant UI as :UserInterface
+    participant V as :Validator
+    participant C as :Controller
+    participant U as :User
+
+    FU ->>+ UI: Enter debt name, balance, APR, and minimum payment, click Add Debt
+    UI ->>+ V: Validate debt fields
+    V -->>- UI: Return field errors (if any)
+
+    alt Any field invalid
+        UI -->> FU: Display error beside each invalid field
+    else All fields valid
+        UI ->>+ C: Request add debt (name, balance, APR, minimum payment)
+        create participant D as newDebt:Debt
+        C ->> D: Create debt (name, balance, APR, minimum payment)
+        C ->>+ U: addDebt(newDebt)
+        U -->>- C: Confirm debt added
+        C -->>- UI: Confirm debt added
+        UI -->> FU: Show new debt in the debt list
+    end
+    deactivate UI

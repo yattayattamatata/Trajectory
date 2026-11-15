@@ -1,0 +1,163 @@
+---
+title: Trajectory Master Class Diagram
+---
+classDiagram
+    direction TB
+
+    class TrajectoryLauncher {}
+    class TrajectoryUI {}
+    class DashboardView {}
+    class DebtView {}
+    class InvestmentView {}
+    class BudgetView {}
+    class Controller {
+        -currentUser: User
+        +createDebt(label, balance, apr, minPayment)
+        +createBudget(name, month, year)
+        +addBudgetEntry(budget, category, amount)
+        +projectDebt(debtID, payment) DebtPayoffResult
+        +projectInvestment(balance, apy, contribution, years)
+        +loadUser(userID)
+    }
+    class Validator {
+        +validateDebtFields(...)
+        +validateBudgetFields(...)
+        +validateEntryFields(...)
+        +validateInvestmentFields(...)
+    }
+    class UserRepository {
+    }
+    class DebtRepository {
+    }
+    class InvestmentRepository {
+    }
+    class BudgetRepository {
+    }
+    class DatabaseManager {
+    }
+    class SchemaInitializer {
+    }
+
+    class User {
+        -name: String
+        -listOfDebts: ArrayList~Debt~
+        -listOfInvestments: ArrayList~Investment~
+        -listOfBudgets: ArrayList~Budget~
+        +addDebt(debt)
+        +addInvestment(investment)
+        +addBudget(budget)
+        +getDebts() ArrayList~Debt~
+        +getInvestments() ArrayList~Investment~
+        +getTotalDebt() double
+        +getTotalInvested() double
+    }
+    class Debt {
+        -balance: double
+        -aprDecimal: double
+        -minimumPayment: double
+        -label: String
+        -databaseID: int
+        +calculateMonthlyInterest() double
+        +projectPayoffTimeline(monthlyPayment) DebtPayoffResult
+        +setDatabaseID(id)
+    }
+    class DebtPayoffResult {
+        -isPossible: boolean
+        -monthsToPayoff: int
+        -totalInterestPaid: double
+        -monthlyBalance: ArrayList~Double~
+        +isPossible() boolean
+        +getMonthsToPayoff() int
+        +getTotalInterestPaid() double
+        +getMonthlyBalance() ArrayList~Double~
+    }
+    class Investment {
+        -balance: double
+        -apyDecimal: double
+        -monthlyContribution: double
+        -label: String
+        +growthOverTime(years) ArrayList~Double~
+    }
+    class CompoundInterestCalculator {
+        -principalAmount: double
+        -rate: double
+        -periodicContribution: double
+        -numberOfCompoundsPerYear: int
+        -numberYears: int
+        +getAmountOverTime() double
+        +getBalanceOverTime() ArrayList~Double~
+    }
+    class Budget {
+        -name: String
+        -month: int
+        -year: int
+        -monthlyEntries: ArrayList~BudgetEntry~
+        -databaseID: int
+        +addEntry(entry)
+        +removeEntry(entry)
+        +calculateTotalIncome() double
+        +calculateTotalExpense() double
+        +calculateRemainingBudget() double
+    }
+    class BudgetEntry {
+        -category: BudgetCategory
+        -amount: double
+        +getCategoryType() Type
+        +getAmount() double
+    }
+    class BudgetCategory {
+        <<enumeration>>
+    }
+    class Limits {
+        +MAX_PROJECTION_YEARS: int
+        +MAX_PROJECTION_MONTHS: int
+        +MINIMUM_MONTH_VALUE: int
+        +MAXIMUM_MONTH_VALUE: int
+    }
+
+    TrajectoryLauncher --> TrajectoryUI
+    TrajectoryUI --> DashboardView
+    TrajectoryUI --> DebtView
+    TrajectoryUI --> InvestmentView
+    TrajectoryUI --> BudgetView
+    DashboardView --> Controller
+    DebtView --> Controller
+    InvestmentView --> Controller
+    BudgetView --> Controller
+    DebtView --> Validator
+    InvestmentView --> Validator
+    BudgetView --> Validator
+    Validator ..> Limits
+    Controller --> User : currentUser
+    Controller --> UserRepository
+    Controller --> DebtRepository
+    Controller --> InvestmentRepository
+    Controller --> BudgetRepository
+    UserRepository ..> User
+    DebtRepository ..> Debt
+    InvestmentRepository ..> Investment
+    BudgetRepository ..> Budget
+    BudgetRepository ..> BudgetEntry
+    UserRepository --> DatabaseManager
+    DebtRepository --> DatabaseManager
+    InvestmentRepository --> DatabaseManager
+    BudgetRepository --> DatabaseManager
+    SchemaInitializer --> DatabaseManager
+    User "1" *-- "0..*" Debt
+    User "1" *-- "0..*" Investment
+    User "1" *-- "0..*" Budget
+    Budget "1" *-- "0..*" BudgetEntry
+    BudgetEntry --> BudgetCategory
+    Debt ..> DebtPayoffResult
+    Debt ..> Limits
+    Investment ..> CompoundInterestCalculator : uses
+
+%% Relationships Reference
+%% classA --|> classB : Inheritance
+%% classC --* classD : Composition
+%% classE --o classF : Aggregation
+%% classG --> classH : Association
+%% classI -- classJ : Link(Solid)
+%% classK ..> classL : Dependency
+%% classM ..|> classN : Realization
+%% classO .. classP : Link(Dashed)
