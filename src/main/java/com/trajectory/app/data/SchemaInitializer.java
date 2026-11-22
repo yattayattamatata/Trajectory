@@ -5,128 +5,108 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * SchemaInitializer creates the database tables needed
- * by Trajectory
+ * Creates all database tables required by Trajectory.
  */
 public final class SchemaInitializer {
 
-    /**
-     * Private constructor prevents objects of this utility class.
-     */
     private SchemaInitializer() {
     }
 
     /**
-     * Creates all Trajectory database tables if they do not
-     * already exist.
+     * Creates the database schema.
+     *
+     * CREATE TABLE IF NOT EXISTS means this can safely
+     * run every time Trajectory starts.
      */
     public static void initialize() {
 
-        /*
-         * One row represents one User object.
-         */
-        String createUsers = """
+        String usersTable = """
                 CREATE TABLE IF NOT EXISTS users (
                     user_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL
-                )
+                );
                 """;
 
-        /*
-         * Each debt belongs to exactly one user.
-         */
-        String createDebts = """
+        String debtsTable = """
                 CREATE TABLE IF NOT EXISTS debts (
                     debt_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     user_id INTEGER NOT NULL,
                     label TEXT NOT NULL,
-                    balance REAL NOT NULL CHECK(balance >= 0),
-                    apr_decimal REAL NOT NULL CHECK(apr_decimal >= 0),
-                    minimum_payment REAL NOT NULL CHECK(minimum_payment >= 0),
+                    balance REAL NOT NULL,
+                    apr_decimal REAL NOT NULL,
+                    minimum_payment REAL NOT NULL,
 
                     FOREIGN KEY (user_id)
-                        REFERENCES users(user_id)
-                        ON DELETE CASCADE
-                )
+                    REFERENCES users(user_id)
+                    ON DELETE CASCADE
+                );
                 """;
 
-        /*
-         * Each investment belongs to exactly one user.
-         */
-        String createInvestments = """
+        String investmentsTable = """
                 CREATE TABLE IF NOT EXISTS investments (
                     investment_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     user_id INTEGER NOT NULL,
                     label TEXT NOT NULL,
-                    balance REAL NOT NULL CHECK(balance >= 0),
-                    apy_decimal REAL NOT NULL CHECK(apy_decimal >= 0),
-                    monthly_contribution REAL NOT NULL
-                        CHECK(monthly_contribution >= 0),
+                    balance REAL NOT NULL,
+                    apy_decimal REAL NOT NULL,
+                    monthly_contribution REAL NOT NULL,
 
                     FOREIGN KEY (user_id)
-                        REFERENCES users(user_id)
-                        ON DELETE CASCADE
-                )
+                    REFERENCES users(user_id)
+                    ON DELETE CASCADE
+                );
                 """;
 
-        /*
-         * Each budget belongs to exactly one user.
-         */
-        String createBudgets = """
+        String budgetsTable = """
                 CREATE TABLE IF NOT EXISTS budgets (
                     budget_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     user_id INTEGER NOT NULL,
                     name TEXT NOT NULL,
-                    month INTEGER NOT NULL CHECK(month BETWEEN 1 AND 12),
+                    month INTEGER NOT NULL,
                     year INTEGER NOT NULL,
 
                     FOREIGN KEY (user_id)
-                        REFERENCES users(user_id)
-                        ON DELETE CASCADE
-                )
+                    REFERENCES users(user_id)
+                    ON DELETE CASCADE
+                );
                 """;
 
-        /*
-         * BudgetEntry objects belong to a Budget.
-         *
-         * category stores the name of the BudgetCategory enum,
-         * such as SALARY, GROCERIES, or OTHER_EXPENSE.
-         */
-        String createBudgetEntries = """
+        String budgetEntriesTable = """
                 CREATE TABLE IF NOT EXISTS budget_entries (
                     entry_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     budget_id INTEGER NOT NULL,
                     custom_description TEXT,
                     category TEXT NOT NULL,
-                    amount REAL NOT NULL CHECK(amount >= 0),
+                    amount REAL NOT NULL,
 
                     FOREIGN KEY (budget_id)
-                        REFERENCES budgets(budget_id)
-                        ON DELETE CASCADE
-                )
+                    REFERENCES budgets(budget_id)
+                    ON DELETE CASCADE
+                );
                 """;
 
-        try (Connection connection =
-                     DatabaseManager.getConnection();
+        try (
+                Connection connection =
+                        DatabaseManager.getConnection();
 
-             Statement statement =
-                     connection.createStatement()) {
+                Statement statement =
+                        connection.createStatement()
+        ) {
 
-            // Parent tables are created before their child tables.
-            statement.executeUpdate(createUsers);
-            statement.executeUpdate(createDebts);
-            statement.executeUpdate(createInvestments);
-            statement.executeUpdate(createBudgets);
-            statement.executeUpdate(createBudgetEntries);
+            statement.executeUpdate(usersTable);
+            statement.executeUpdate(debtsTable);
+            statement.executeUpdate(investmentsTable);
+            statement.executeUpdate(budgetsTable);
+            statement.executeUpdate(budgetEntriesTable);
 
             System.out.println(
-                    "Trajectory database initialized successfully."
+                    "Trajectory database initialized."
             );
 
         } catch (SQLException e) {
 
             throw new RuntimeException(
-                    "Unable to initialize Trajectory database.",
+                    "Could not initialize database.",
                     e
             );
         }

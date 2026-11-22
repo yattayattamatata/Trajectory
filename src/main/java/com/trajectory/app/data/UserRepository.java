@@ -10,17 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * UserRepository handles database operations involving User objects.
+ * Handles database operations for User objects.
  */
 public class UserRepository {
 
     /**
-     * Saves a new User to SQLite.
-     *
-     * After SQLite generates the user_id, that ID is placed
-     * into the User object's databaseID field.
-     *
-     * @param user User to save
+     * Saves a new user.
      */
     public void save(User user) {
 
@@ -29,26 +24,35 @@ public class UserRepository {
                 VALUES (?)
                 """;
 
-        try (Connection connection =
-                     DatabaseManager.getConnection();
+        try (
+                Connection connection =
+                        DatabaseManager.getConnection();
 
-             PreparedStatement statement =
-                     connection.prepareStatement(
-                             sql,
-                             Statement.RETURN_GENERATED_KEYS
-                     )) {
+                PreparedStatement statement =
+                        connection.prepareStatement(
+                                sql,
+                                Statement.RETURN_GENERATED_KEYS
+                        )
+        ) {
 
-            statement.setString(1, user.getName());
+            statement.setString(
+                    1,
+                    user.getName()
+            );
 
             statement.executeUpdate();
 
             /*
-             * Retrieve the automatically generated SQLite ID.
+             * Get SQLite's generated user_id.
              */
-            try (ResultSet keys = statement.getGeneratedKeys()) {
+            try (ResultSet keys =
+                         statement.getGeneratedKeys()) {
 
                 if (keys.next()) {
-                    user.setDatabaseID(keys.getInt(1));
+
+                    user.setDatabaseID(
+                            keys.getInt(1)
+                    );
                 }
             }
 
@@ -62,14 +66,7 @@ public class UserRepository {
     }
 
     /**
-     * Finds one user using the database ID.
-     *
-     * This loads only the basic User information.
-     * Use loadFullProfile() to also load debts,
-     * investments, and budgets.
-     *
-     * @param userID database user ID
-     * @return User or null if not found
+     * Loads one user.
      */
     public User findByID(int userID) {
 
@@ -79,13 +76,18 @@ public class UserRepository {
                 WHERE user_id = ?
                 """;
 
-        try (Connection connection =
-                     DatabaseManager.getConnection();
+        try (
+                Connection connection =
+                        DatabaseManager.getConnection();
 
-             PreparedStatement statement =
-                     connection.prepareStatement(sql)) {
+                PreparedStatement statement =
+                        connection.prepareStatement(sql)
+        ) {
 
-            statement.setInt(1, userID);
+            statement.setInt(
+                    1,
+                    userID
+            );
 
             try (ResultSet results =
                          statement.executeQuery()) {
@@ -93,7 +95,9 @@ public class UserRepository {
                 if (results.next()) {
 
                     User user =
-                            new User(results.getString("name"));
+                            new User(
+                                    results.getString("name")
+                            );
 
                     user.setDatabaseID(
                             results.getInt("user_id")
@@ -115,9 +119,7 @@ public class UserRepository {
     }
 
     /**
-     * Returns every saved profile.
-     *
-     * Useful for a profile-selection screen.
+     * Loads every saved profile.
      */
     public List<User> findAll() {
 
@@ -127,21 +129,26 @@ public class UserRepository {
                 ORDER BY name
                 """;
 
-        ArrayList<User> users = new ArrayList<>();
+        ArrayList<User> users =
+                new ArrayList<>();
 
-        try (Connection connection =
-                     DatabaseManager.getConnection();
+        try (
+                Connection connection =
+                        DatabaseManager.getConnection();
 
-             PreparedStatement statement =
-                     connection.prepareStatement(sql);
+                PreparedStatement statement =
+                        connection.prepareStatement(sql);
 
-             ResultSet results =
-                     statement.executeQuery()) {
+                ResultSet results =
+                        statement.executeQuery()
+        ) {
 
             while (results.next()) {
 
                 User user =
-                        new User(results.getString("name"));
+                        new User(
+                                results.getString("name")
+                        );
 
                 user.setDatabaseID(
                         results.getInt("user_id")
@@ -162,15 +169,11 @@ public class UserRepository {
     }
 
     /**
-     * Deletes a User.
+     * Deletes a user.
      *
-     * Because our foreign keys use ON DELETE CASCADE,
-     * deleting the User also deletes the User's:
-     *
-     * debts
-     * investments
-     * budgets
-     * budget entries
+     * Because the child tables use ON DELETE CASCADE,
+     * the user's debts, investments, budgets, and
+     * budget entries will also be removed.
      */
     public void delete(User user) {
 
@@ -179,11 +182,13 @@ public class UserRepository {
                 WHERE user_id = ?
                 """;
 
-        try (Connection connection =
-                     DatabaseManager.getConnection();
+        try (
+                Connection connection =
+                        DatabaseManager.getConnection();
 
-             PreparedStatement statement =
-                     connection.prepareStatement(sql)) {
+                PreparedStatement statement =
+                        connection.prepareStatement(sql)
+        ) {
 
             statement.setInt(
                     1,
@@ -202,23 +207,14 @@ public class UserRepository {
     }
 
     /**
-     * Loads the complete financial profile for a User.
-     *
-     * This method:
-     *
-     * 1. Loads the User
-     * 2. Loads all Debts
-     * 3. Loads all Investments
-     * 4. Loads all Budgets and their BudgetEntries
-     *
-     * @param userID database ID of User
-     * @return completely reconstructed User object
+     * Loads a User and all financial information
+     * belonging to that User.
      */
     public User loadFullProfile(int userID) {
 
-        User user = findByID(userID);
+        User user =
+                findByID(userID);
 
-        // User does not exist.
         if (user == null) {
             return null;
         }
@@ -232,31 +228,18 @@ public class UserRepository {
         BudgetRepository budgetRepository =
                 new BudgetRepository();
 
-        /*
-         * Load each debt and put it back into
-         * the User object's listOfDebts.
-         */
         for (Debt debt :
                 debtRepository.findByUserID(userID)) {
 
             user.addDebt(debt);
         }
 
-        /*
-         * Restore investments.
-         */
         for (Investment investment :
                 investmentRepository.findByUserID(userID)) {
 
             user.addInvestment(investment);
         }
 
-        /*
-         * Restore budgets.
-         *
-         * BudgetRepository also restores each Budget's
-         * BudgetEntry objects.
-         */
         for (Budget budget :
                 budgetRepository.findByUserID(userID)) {
 

@@ -1,6 +1,7 @@
 package com.trajectory.app;
 
 import com.trajectory.app.model.*;
+import com.trajectory.app.data.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;

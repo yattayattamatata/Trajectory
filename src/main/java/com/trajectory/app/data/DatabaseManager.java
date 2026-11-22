@@ -6,35 +6,46 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * repository classes should use this class instead of
- * opening their own database connections manually.
+ * Handles connections to the Trajectory SQLite database.
  */
 public final class DatabaseManager {
 
+    /*
+     * SQLite will create trajectory.db automatically
+     * if the database file does not already exist.
+     */
     private static final String DATABASE_URL =
             "jdbc:sqlite:trajectory.db";
 
     /**
-     * Private constructor prevents creation of DatabaseManager objects
+     * Private constructor prevents DatabaseManager
+     * from being instantiated.
      */
     private DatabaseManager() {
     }
 
     /**
-     * Opens and returns a connection to the SQLite database.
+     * Opens a connection to the SQLite database.
      *
-     * @return open SQLite database connection
-     * @throws SQLException if connection cannot be opened
+     * @return an open database connection
+     * @throws SQLException if the connection fails
      */
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection()
+            throws SQLException {
 
         Connection connection =
                 DriverManager.getConnection(DATABASE_URL);
 
-        // SQLite foreign key enforcement must be enabled
-        // for each database connection.
-        try (Statement statement = connection.createStatement()) {
-            statement.execute("PRAGMA foreign_keys = ON");
+        /*
+         * SQLite does not enforce foreign keys by default.
+         * This turns them on for this connection.
+         */
+        try (Statement statement =
+                     connection.createStatement()) {
+
+            statement.execute(
+                    "PRAGMA foreign_keys = ON"
+            );
         }
 
         return connection;
